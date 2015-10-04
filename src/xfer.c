@@ -818,21 +818,19 @@ static bbc_status_t retrieve_disc(serial_h com)
 		do {
 			long rbytes = remaining;
 
-			if ((result = bbc_read(com, buffer, &rbytes)) == BBC_OK) {
-				if (!trackerr &&
-					(long)fwrite(buffer, sizeof(char), rbytes, image) != rbytes)
-					trackerr = true;
-				remaining -= rbytes;
-				crccalc(buffer, rbytes, &crc);
-
-				//        printf("\rRead %ld tracks of %ld", ntracks + 1, size) ;
-
-				printf("\rRead %ld tracks of %ld", ntracks + 1, size);
-
-				fflush(stdout);
+			result = bbc_read(com, buffer, &rbytes);
+			if (!trackerr &&
+				(long)fwrite(buffer, sizeof(char), rbytes, image) != rbytes) {
+				trackerr = true;
 			}
-			else /* Error reading bytes */
-				break;
+			remaining -= rbytes;
+			crccalc(buffer, rbytes, &crc);
+
+			//        printf("\rRead %ld tracks of %ld", ntracks + 1, size) ;
+
+			printf("\rRead %ld tracks of %ld", ntracks + 1, size);
+
+			fflush(stdout);
 		} while (remaining > 0);
 
 		/* Get checksum */
@@ -843,18 +841,18 @@ static bbc_status_t retrieve_disc(serial_h com)
 				sscanf(buffer, "%ld", &bbccrc) != 1) {
 				printf("\nProblem retrieving CRC for disc %c track %ld from BBC\n",
 					drivech, ntracks);
-				trackerr = true;
+				//trackerr = true;
 			}
 			else if (bbccrc != crc) {
 				printf("\nCRC error for disc %c track %ld from BBC\n",
 					drivech, ntracks);
-				trackerr = true;
+				//trackerr = true;
 			}
 		}
 		else {
 			printf("\nProblem retrieving disc %c track %ld from BBC\n",
 				drivech, ntracks);
-			trackerr = true;
+			//trackerr = true;
 		}
 	}
 
@@ -944,21 +942,18 @@ static bbc_status_t retrieve_dbl_disc(serial_h com)
 		do {
 			long rbytes = remaining;
 
-			if ((result = bbc_read(com, buffer, &rbytes)) == BBC_OK) {
-				if (!trackerr &&
-					(long)fwrite(buffer, sizeof(char), rbytes, image) != rbytes)
-					trackerr = true;
-				remaining -= rbytes;
-				crccalc(buffer, rbytes, &crc);
+			result = bbc_read(com, buffer, &rbytes);
+			if (!trackerr &&
+				(long)fwrite(buffer, sizeof(char), rbytes, image) != rbytes)
+				trackerr = true;
+			remaining -= rbytes;
+			crccalc(buffer, rbytes, &crc);
 
-				//        printf("\rRead %ld tracks of %ld", ntracks + 1, size) ;
+			//        printf("\rRead %ld tracks of %ld", ntracks + 1, size) ;
 
-				printf("\rRead %ld tracks of %ld", ntracks + 1, size);
+			printf("\rRead %ld tracks of %ld", ntracks + 1, size);
 
-				fflush(stdout);
-			}
-			else /* Error reading bytes */
-				break;
+			fflush(stdout);
 		} while (remaining > 0);
 
 		/* Get checksum */
@@ -969,18 +964,18 @@ static bbc_status_t retrieve_dbl_disc(serial_h com)
 				sscanf(buffer, "%ld", &bbccrc) != 1) {
 				printf("\nProblem retrieving CRC for disc %c track %ld from BBC\n",
 					drivech, ntracks);
-				trackerr = true;
+				//trackerr = true;
 			}
 			else if (bbccrc != crc) {
 				printf("\nCRC error for disc %c track %ld from BBC\n",
 					drivech, ntracks);
-				trackerr = true;
+				//	trackerr = true;
 			}
 		}
 		else {
 			printf("\nProblem retrieving disc %c track %ld from BBC\n",
 				drivech, ntracks);
-			trackerr = true;
+			//trackerr = true;
 		}
 	}
 
@@ -1133,18 +1128,18 @@ static bbc_status_t retrieve_ADFS_disc(serial_h com, bool force_single_side)
 				sscanf(buffer, "%ld", &bbccrc) != 1) {
 				printf("\nProblem retrieving CRC for disc %c track %d from BBC\n",
 					drivech, ntracks);
-			//	trackerr = true;
+				//	trackerr = true;
 			}
 			else if (bbccrc != crc) {
 				printf("\nCRC error for disc %c track %d from BBC\n",
 					drivech, ntracks);
-		//		trackerr = true;
+				//		trackerr = true;
 			}
 		}
 		else {
 			printf("\nProblem retrieving disc %c track %d from BBC\n",
 				drivech, ntracks);
-	//		trackerr = true;
+			//		trackerr = true;
 		}
 	}
 

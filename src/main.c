@@ -245,8 +245,10 @@ bbc_status_t bbc_read(serial_h com, char *buffer, long *size)
   }
 
   switch ( serial_read(com, buffer, size) ) {
-  case SERIAL_TIMEOUT:
-    return BBC_ERROR ;
+  case SERIAL_TIMEOUT: {
+	  memset(buffer, 0, *size);
+	  return BBC_ERROR; 
+  }
   case SERIAL_ERROR:
     error("Problem reading buffer from serial port") ;
   default: ;
