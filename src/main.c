@@ -3,10 +3,11 @@
  * XFer in C
  *
  * Copyright (C) Mark de Weger 1997, Angus Duggan 1999. Jon Welch 2005,
- *               Greg Cook 2013
+ *               Greg Cook 2013, Robert Hargreaves 2015
  *
  * Additional modifications done by Jon Welch - jon.welch@ntlworld.com
  * Additional modifications done by Greg Cook - debounce@yahoo.co.uk
+ * Additional modifications done by Robert Hargreaves - robert@roberthargreaves.net
  *
  * Freely redistributable software. See file LICENSE for details.
  */
@@ -24,7 +25,7 @@ void usage(void)
 {
   fprintf(stderr, "XFer in C version %.2f\n"
           "Copyright Mark de Weger 1997, Angus J. C. Duggan 1999,\n"
-          "          Jon Welch 2005, Greg Cook 2013\n"
+          "          Jon Welch 2005, Greg Cook 2013, Robert Hargreaves 2015\n"
           "Usage: %s [-b baud] [-c port] [-t timeout] [-h ctsrts|dsrdtr|xonxoff] [-d on|off] [-w on|off] [-1|-1st] [-r]\n"
           "\t-b baud\t\tset baud rate (default 9600)\n"
           "\t-c port\t\tset COM port\n"
@@ -416,7 +417,7 @@ int main(int argc, char *argv[])
          "\tfrom BBC computers via a serial link.\n"
          "\n"
          "Copyright (C) 1996-1997 Mark de Weger, 1999 Angus Duggan,\n"
-         "              2005 Jon Welch, 2013 Greg Cook\n"
+         "              2005 Jon Welch, 2013 Greg Cook, 2015 Robert Hargreaves\n"
          "\n", program) ;
 
   if ( firsttime ) {

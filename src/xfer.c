@@ -3,10 +3,11 @@
  * Transfer dialogue routines for XFer in C
  *
  * Copyright (C) Mark de Weger 1997, Angus Duggan 1999, Jon Welch 2005,
- *               Greg Cook 2013
+ *               Greg Cook 2013, Robert Hargreaves 2015
  *
  * Additional modifications done by Jon Welch - jon.welch@ntlworld.com
  * Additional modifications done by Greg Cook - debounce@yahoo.co.uk
+ * Additional modifications done by Robert Hargreaves - robert@roberthargreaves.net
  *
  * Freely redistributable software. See file LICENSE for details.
  */
