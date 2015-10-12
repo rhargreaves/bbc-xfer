@@ -11,7 +11,7 @@ namespace Adf2Adl
     {
         static void Main(string[] args)
         {
-            if (args.Length != 0)
+            if (args.Length != 2)
             {
                 Console.WriteLine("Usage: Adf2Adl.exe <adf_file> <adl_file>");
                 return;
