@@ -876,7 +876,7 @@
  8420\ Seek track
  8430LDA #1
  8440STA pblock%+5
- 8450LDA #&29
+ 8450LDA #&69
  8460STA pblock%+6
  8470LDX #pblock% MOD 256
  8480LDY #pblock% DIV 256
